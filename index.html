@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="When and How Much to Imagine: Adaptive Test-Time Scaling with World Models for Visual Spatial Reasoning">
+  <meta name="keywords" content="world model, visual spatial reasoning, test time scaling, embodied AI, adaptive imagination">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>When and How Much to Imagine: Adaptive Test-Time Scaling with World Models for Visual Spatial Reasoning</title>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./prj_static/images/favicon.svg"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+</head>
+
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-3 publication-title">
+            When and How Much to Imagine: <br> Adaptive Test-Time Scaling with World Models <br> for Visual Spatial Reasoning</h1>
+<div class="is-size-5 publication-authors">
+  <!-- 第一排 -->
+  <!-- <div class="author-row">
+    <span class="author-block">CVPR 2025</span>
+  </div> -->
+  
+  <div class="author-row">
+    <span class="author-block"><a href="https://yui010206.github.io/">Shoubin Yu*</a></span> &nbsp;&nbsp;&nbsp;
+    <span class="author-block"><a href="https://zhangyuejoslin.github.io/">Yue Zhang*</a></span> &nbsp;&nbsp;&nbsp;
+    <span class="author-block"><a href="https://zunwang1.github.io/">Zun Wang</a></span>
+  </div>
+  <!-- 第二排 -->
+  <div class="author-row">
+    <span class="author-block"><a href="https://jaehong31.github.io/">Jaehong Yoon</a></span> &nbsp;&nbsp;&nbsp;
+    <span class="author-block"><a href="https://huaxiuyao.strikingly.com/">Huaxiu Yao</a></span> &nbsp;&nbsp;&nbsp;
+    <span class="author-block"><a href="https://dingmyu.github.io/">Mingyu Ding</a></span> &nbsp;&nbsp;&nbsp;
+    <span class="author-block"><a href="https://www.cs.unc.edu/~mbansal/">Mohit Bansal</a></span> 
+  </div>
+</div>
+<div class="is-size-5 publication-authors">
+  <span class="author-block">University of North Carolina, Chapel Hill</span> &nbsp;&nbsp;&nbsp;
+  <span class="author-block">Nanyang Technological University</span>
+</div>
+<div class="is-size-5 publication-authors">
+  <span class="author-block">*: equal contribution</span>
+</div>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+            </div>
+
+        </div>      
+      </div>
+    </div>  
+    <section class="hero is-small">
+      <div class="body">
+        <div class="container">
+          <center>
+            <img src="./images/teaser.png" width="80%">
+          </center>
+          <div class="content has-text-justified" style="margin: auto; width: 100%;">
+              <b>Figure 1: </b>. While imagined views can reveal unseen perspectives and improve reasoning, they are often unnecessary or even misleading when task-relevant evidence is already visible or hallucinated incorrectly. Empirically, imagination helps only a minority of cases, and increasing the number of imagined views yields non-monotonic accuracy gains while substantially raising token and runtime costs—motivating selective, adaptive test-time use of world models rather than always-on imagination.
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Despite rapid progress in Multimodal Large Lan- guage Models (MLLMs), visual spatial reasoning remains unreliable when correct answers depend on how a scene would appear under unseen or alternative viewpoints. Recent work addresses this by augmenting models with world models for visual imagination, yet when such imagina- tion is actually necessary, how much is benefi- cial, and when it becomes harmful, remain poorly understood. In practice, indiscriminate imagina- tion can increase computation and even degrade performance by introducing misleading evidence. In this work, we present an in-depth analysis of test-time visual imagination as a controllable re- source for spatial reasoning. We study when static visual evidence is sufficient, when imagination improves reasoning, and how excessive or unnec- essary imagination affects accuracy and efficiency. To support this analysis, we introduce AVIC, an adaptive test-time framework with world mod- els that explicitly reason about the sufficiency of current visual evidence before selectively invok- ing and scaling visual imagination. Across spa- tial reasoning benchmarks (SAT, MMSI) and an embodied navigation benchmark (R2R), our re- sults reveal clear regimes where imagination is critical, marginal, or detrimental, and show that selective control can match or outperform fixed imagination strategies with substantially fewer world-model calls and language tokens. Together, our findings highlight the importance of analyzing and controlling test-time visual imagination for efficient and reliable spatial reasoning.  </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<br>
+<br>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+    <h2 class="title is-3">Method</h2>
+
+      <center><img src="./images/method.png" alt="Teaser" width="100%"></center>
+
+      <div class="content has-text-justified">
+        <b>Figure 2: Comparison with other methods.</b> (a) Answers directly from the current observation without any imagination. (b) Always invokes the world model w. full exploration to generate imagined views for downstream reasoning. (c) Ours: Uses a policy model to first decide whether visual imagination is necessary and to plan actions accordingly. It selectively queries the world model (both when and how much) and otherwise performs direct reasoning.
+      </div>
+
+    </div>
+  </div>
+  </div>
+</section>
+
+<br>
+<br>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+    <h2 class="title is-3">Results on SAT-Real</h2>
+
+    </div>
+  </div>
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <div class="content has-text-justified">
+        <b>Table 1</b>: Comparison between test-time scaling methods on SAT-Real dataset with different MLLMs. The best results are denoted by the bold. Avg. WM: average world model calling times over the dataset.</div>
+    <center><img src="./images/table1.png" alt="Teaser" width="100%"></center>
+    <div class="content has-text-justified">
+    We evaluate both reasoning performance and computational cost, measured by total token usage and average world model calling times. Across all open-source and proprietary MLLM models, our method consistently improves average accuracy over the corresponding base MLLMs and achieves performance competitive with, or superior to, the always-on/dense imagination baseline (MindJourney). With GPT-4.1, our method raises average accuracy from 74.0% to 79.3%, surpassing MindJourney while using far fewer tokens. With o1, we achieve the best overall accuracy (85.3%), improving by 10.7% over the base model. 
+  </div>
+  </div>
+  </div>
+
+
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-3">Results on MMSI</h2>
+
+    <center><img src="./images/table2.png" alt="Teaser" width="100%"></center>
+
+    <div class="content has-text-justified">
+      We evaluate both reasoning performance and computational cost, measured by total token usage and average world model calling times. Across all open-source and proprietary MLLM models, our method consistently improves average accuracy over the corresponding base MLLMs and achieves performance competitive with, or superior to, the always-on/dense imagination baseline (MindJourney). With GPT-4.1, our method raises average accuracy from 74.0% to 79.3%, surpassing MindJourney while using far fewer tokens. With o1, we achieve the best overall accuracy (85.3%), improving by 10.7% over the base model. </div>
+  </div>
+  </div>
+
+
+    <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-3">Results on R2R</h2>
+
+    <center><img src="./images/table3.png" alt="Teaser" width="60%"></center>
+
+    <div class="content has-text-justified">
+      we provide a detailed analysis of our VideoTree framework. All quantitative analyses are conducted on the validation subset of the EgoSchema dataset. First, we analyze the tradeoff between efficiency and effectiveness, comparing VideoTree to the LLoVi baseline.
+      Here we show that our method has better efficiency and performance across all settings. We then verify the effectiveness of the query-adaptive hierarchical video representation by comparing against different alternative representations. Finally, we visualize the output trees from VideoTree and show the clusters VideoTree chooses to expand, qualitatively supporting its quantitative gains. </div>
+  </div>
+  </div>
+
+
+  </div>
+</section>
+
+<br>
+<br>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+    <h2 class="title is-3">When and How Much a World Model is Needed for Visual Spatial Reasoning?</h2>
+
+<center><img src="./images/analysis.png" alt="Teaser" width="100%"></center>
+      <div class="content has-text-justified">
+ <p>
+Across our analysis, we found: <br>
+(1) WM should be used selectively, primarily when spatial reasoning requires predicting future states under hypothetical actions, rather than reinterpreting existing visual evidence. <br>
+(2) Visual spatial reasoning benefits most from targeted rather than extensive WM imagination.
+</p>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+    <h2 class="title is-3">Qualitative Analysis</h2>
+
+<center><img src="./images/vis.png" alt="Teaser" width="100%"></center>
+      <div class="content has-text-justified">
+ <p>
+</p>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{,
+  author    = {},
+  title     = {},
+  journal   = {arxiv},
+  year      = {2026},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p style="text-align:right;font-size:small;">
+          <a href="https://github.com/nerfies/nerfies.github.io">
+            This guy makes a nice webpage.
+          </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

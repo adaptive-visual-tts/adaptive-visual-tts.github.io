@@ -184,7 +184,7 @@
     <center><img src="./images/table2.png" alt="Teaser" width="100%"></center>
 
     <div class="content has-text-justified">
-      We evaluate both reasoning performance and computational cost, measured by total token usage and average world model calling times. Across all open-source and proprietary MLLM models, our method consistently improves average accuracy over the corresponding base MLLMs and achieves performance competitive with, or superior to, the always-on/dense imagination baseline (MindJourney). With GPT-4.1, our method raises average accuracy from 74.0% to 79.3%, surpassing MindJourney while using far fewer tokens. With o1, we achieve the best overall accuracy (85.3%), improving by 10.7% over the base model. </div>
+      we further apply our method to another visual spatial reasoning benchmark, MMSI-Bench, and observe consistent improvements across MLLMs, highlighting the generalizability of our approach. </div>
   </div>
   </div>
 
@@ -196,8 +196,7 @@
     <center><img src="./images/table3.png" alt="Teaser" width="60%"></center>
 
     <div class="content has-text-justified">
-      we provide a detailed analysis of our VideoTree framework. All quantitative analyses are conducted on the validation subset of the EgoSchema dataset. First, we analyze the tradeoff between efficiency and effectiveness, comparing VideoTree to the LLoVi baseline.
-      Here we show that our method has better efficiency and performance across all settings. We then verify the effectiveness of the query-adaptive hierarchical video representation by comparing against different alternative representations. Finally, we visualize the output trees from VideoTree and show the clusters VideoTree chooses to expand, qualitatively supporting its quantitative gains. </div>
+      We further applied our adaptive visual test-time scaling method to the embodiment navigation task, and compared it with previous works.in MapGPT, and re-implement MapGPT with the same API. We apply our method within MapGPT's step-wise navigation framework. Compared to MapGPT with GPT-4o, our method achieves higher OSR, SR, and SPL while also reducing navigation error (NE), indicating more reliable goal reaching with shorter, less redundant trajectories. These gains suggest that our world-model imagination strategy helps resolve ambiguous visual-spatial decisions. Overall, the results demonstrate that our adaptive visual test-time scaling is an effective mechanism and transfers the gains for embodied navigation. </div>
   </div>
   </div>
 
@@ -237,6 +236,9 @@ Across our analysis, we found: <br>
 <center><img src="./images/vis.png" alt="Teaser" width="100%"></center>
       <div class="content has-text-justified">
  <p>
+  Qualitative examples on SAT of the always-on imagination method and our adaptive method, as well as the R2R navigation task. In the navigation example, the green option is selected by the model with adaptive imagination via our method, while the red one is without world model imagination.
+  We compare our adaptive visual TTS method with the always-on imagination method, MindJourney (MJ). In the first example, the target object (the cash counter) is already clearly visible in the observed view. Our method correctly identifies that additional visual imagination is unnecessary and directly skips world model. In contrast, MJ indiscriminately invokes the world model, generating multiple imagined views that introduce misleading evidence and ultimately lead to an incorrect prediction. In the second example, AVIC yields the correct answer by selectively imagining the state where the agent
+is in front of the trash bin. In contrast, MJ performs dense imagination and generates views that do not accurately reflect this critical spatial condition, leading to an incorrect prediction. Furthermore, we present a qualitative navigation example at the bottom. Our adaptive visual test-time scaling selectively augments informative indoor observations (e.g., zooming in or turning to explore nearby views), enabling the agent to better inspect the environment and align its actions with the global instruction (“go to the kitchen”). In contrast, the baseline without visual imagination lacks sufficient perceptual evidence and consequently chooses an incorrect direction.
 </p>
       </div>
     </div>
@@ -247,9 +249,9 @@ Across our analysis, we found: <br>
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{,
-  author    = {},
-  title     = {},
+    <pre><code>@article{yu2026when,
+  author    = {Shoubin Yu, Yue Zhang, Zun Wang, Jaehong Yoon, Huaxiu Yao, Mingyu Ding, Mohit Bansal},
+  title     = {When and How Much to Imagine: Adaptive Test-Time Scaling with World Models for Visual Spatial Reasoning},
   journal   = {arxiv},
   year      = {2026},
 }</code></pre>
